@@ -1,15 +1,25 @@
+<script setup lang="ts">
+// import Setting from "./Setting.vue"
+import { localeForMenu, type TypeOfLocaleForMenu } from '../../locale/menu';
+
+const props = defineProps<{
+  lang: 'en' | 'ko' | 'jp';
+}>();
+const locale: TypeOfLocaleForMenu = localeForMenu;
+</script>
+
 <template>
   <div>
     <div class="app">
       <router-link to="/"><img src="@/assets/main.png" alt="unite-dmg.com" srcset="" class="logo"></router-link>
       <div>
-        <BDropdown :right="true" id="dropdown-1" :text="locale.menu.ko" class="dropdown">
-          <BDropdownItem to="/">{{ locale.substituteCalc.ko }}</BDropdownItem>
-          <BDropdownItem to="/more">{{ locale.opponentCalc.ko }}</BDropdownItem>
-          <BDropdownItem to="/wild">{{ locale.wildCalc.ko }}</BDropdownItem>
-          <BDropdownItem to="/random">{{ locale.teamRandomizer.ko }}</BDropdownItem>
-          <BDropdownItem to="/compare">{{ locale.wildCalc.ko }}</BDropdownItem>
-          <!-- <BDropdownItem to="/aspeed">{{ locale.attackSpeed.ko }}</BDropdownItem> -->
+        <BDropdown :right="true" id="dropdown-1" :text="locale.menu[props.lang]" class="dropdown">
+          <BDropdownItem to="/">{{ locale.substituteCalc[props.lang] }}</BDropdownItem>
+          <BDropdownItem to="/more">{{ locale.opponentCalc[props.lang] }}</BDropdownItem>
+          <BDropdownItem to="/wild">{{ locale.wildCalc[props.lang] }}</BDropdownItem>
+          <BDropdownItem to="/random">{{ locale.teamRandomizer[props.lang] }}</BDropdownItem>
+          <BDropdownItem to="/compare">{{ locale.wildCalc[props.lang] }}</BDropdownItem>
+          <!-- <BDropdownItem to="/aspeed">{{ locale.attackSpeed[props.lang] }}</BDropdownItem> -->
         </BDropdown>
       </div>
     </div>
@@ -19,13 +29,6 @@
     <!-- <Setting /> -->
   </div>
 </template>
-  
-<script setup lang="ts">
-// import Setting from "./Setting.vue"
-import { localeForMenu, type TypeOfLocaleForMenu } from '../../locale/menu';
-
-const locale: TypeOfLocaleForMenu = localeForMenu;
-</script>
   
 <style scoped>
 .app {
