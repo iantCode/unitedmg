@@ -1,4 +1,3 @@
-import type { Type } from "typescript";
 import { type LocaleTable } from "."
 
 export const localeForMenu: TypeOfLocaleForMenu = {
@@ -36,6 +35,11 @@ export const localeForMenu: TypeOfLocaleForMenu = {
     ko: '공격 속도 (알파)',
     en: 'Attack Speed (Alpha)',
     jp: '攻撃速度 (Alpha)'
+  },
+  seconds: {
+    ko: "초",
+    en: 's',
+    jp: "秒"
   }
 }
 
@@ -47,4 +51,5 @@ export interface TypeOfLocaleForMenu {
   teamRandomizer: LocaleTable;
   emblemCompare: LocaleTable;
   attackSpeed: LocaleTable;
+  seconds: LocaleTable;
 }

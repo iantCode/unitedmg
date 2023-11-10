@@ -1,13 +1,12 @@
 <script setup lang="ts">
 // import Skill from './Skill.vue'
 import PokemonSelect from './left/PokemonSelect.vue'
-import PokemonStatInfoVue from './left/PokemonStatInfo.vue';
+import PokemonStatInfo from './left/PokemonStatInfo.vue';
 import PokemonLevel from './left/PokemonLevel.vue'
 import PokemonHP from './left/PokemonHP.vue';
-// import HP from './HP.vue'
+import PokemonSkill from './right/PokemonSkill.vue';
 // import Buffs from '../buffs/Buffs.vue'
 // import LoadPokemon from './button/LoadPokemon.vue'
-// import StatInfo from './StatInfo.vue'
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { localeForPokemon, type TypeOfLocaleForPokemon } from '../../locale/pokemon';
@@ -47,12 +46,13 @@ const turnWrap = (bool: boolean) => {
       <div id="left" ref="left">
         <div class="pokemon-info">
           <PokemonSelect :wrap="isDetailWrapped" v-on:turnWrap="turnWrap" />
-          <PokemonStatInfoVue :pokemon="props.pokemon" :lang="props.lang" />
+          <PokemonStatInfo :pokemon="props.pokemon" :lang="props.lang" />
         </div>
-        <PokemonLevel :lang="props.lang" :pokemon="props.pokemon"/>
-        <PokemonHP :pokemon="props.pokemon"/>
+        <PokemonLevel :pokemon="props.pokemon" :lang="props.lang" />
+        <PokemonHP :pokemon="props.pokemon" />
       </div>
       <div id="right">
+        <PokemonSkill :pokemon="props.pokemon" :lang="props.lang" />
       </div>
     </div>
   </div>

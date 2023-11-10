@@ -58,6 +58,10 @@ export class Pokemon {
     this.currentStat.defenseEHP = Math.floor(this.currentStat.hp * (1 + (this.currentStat.defense / 600)))
     this.currentStat.sp_defenseEHP = Math.floor(this.currentStat.hp * (1 + (this.currentStat.sp_defense / 600)))
   }
+
+  updateCurrentSkill(newSkill: number) {
+    this.usingSkill = newSkill;
+  }
 }
 
 class BasePokemon {

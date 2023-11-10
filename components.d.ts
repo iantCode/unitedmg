@@ -14,14 +14,18 @@ declare module 'vue' {
     BDropDown: typeof import('bootstrap-vue-next')['BDropDown']
     BDropdownItem: typeof import('bootstrap-vue-next')['BDropdownItem']
     BDropDownItem: typeof import('bootstrap-vue-next')['BDropDownItem']
+    BFormRadio: typeof import('bootstrap-vue-next')['BFormRadio']
+    BFormRadioGroup: typeof import('bootstrap-vue-next')['BFormRadioGroup']
     BModal: typeof import('bootstrap-vue-next')['BModal']
     Pokemon: typeof import('./src/components/pokemon/Pokemon.vue')['default']
     PokemonHP: typeof import('./src/components/pokemon/left/PokemonHP.vue')['default']
     PokemonLevel: typeof import('./src/components/pokemon/left/PokemonLevel.vue')['default']
     PokemonMain: typeof import('./src/components/pokemon/PokemonMain.vue')['default']
     PokemonSelect: typeof import('./src/components/pokemon/left/PokemonSelect.vue')['default']
+    PokemonSkill: typeof import('./src/components/pokemon/right/PokemonSkill.vue')['default']
     PokemonStatInfo: typeof import('./src/components/pokemon/left/PokemonStatInfo.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Skill: typeof import('./src/components/pokemon/right/Skill.vue')['default']
   }
 }
