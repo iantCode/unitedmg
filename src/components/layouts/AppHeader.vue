@@ -15,10 +15,10 @@ const locale: TypeOfLocaleForMenu = localeForMenu;
       <div>
         <BDropdown :right="true" id="dropdown-1" :text="locale.menu[props.lang]" class="dropdown">
           <BDropdownItem to="/">{{ locale.substituteCalc[props.lang] }}</BDropdownItem>
-          <BDropdownItem to="/more">{{ locale.opponentCalc[props.lang] }}</BDropdownItem>
+          <!-- <BDropdownItem to="/more">{{ locale.opponentCalc[props.lang] }}</BDropdownItem>
           <BDropdownItem to="/wild">{{ locale.wildCalc[props.lang] }}</BDropdownItem>
           <BDropdownItem to="/random">{{ locale.teamRandomizer[props.lang] }}</BDropdownItem>
-          <BDropdownItem to="/compare">{{ locale.wildCalc[props.lang] }}</BDropdownItem>
+          <BDropdownItem to="/compare">{{ locale.wildCalc[props.lang] }}</BDropdownItem> -->
           <!-- <BDropdownItem to="/aspeed">{{ locale.attackSpeed[props.lang] }}</BDropdownItem> -->
         </BDropdown>
       </div>

@@ -1,17 +1,19 @@
 <script setup lang="ts">
+import type { Ref } from "vue";
 import PokemonMain from "../components/pokemon/PokemonMain.vue"
-import { Pokemon, usePokemon } from '../composables/pokemon'
+import { usePokemon } from '../composables/pokemon'
+import { Pokemon } from "@/interfaces/Pokemon";
 // import Result from '../components/Result.vue'
 
 const props = defineProps<{
   lang: 'en' | 'ko' | 'jp';
 }>();
-const myPokemon: Pokemon = usePokemon();
+const myPokemon: Ref<Pokemon> = usePokemon();
 </script>
 
 <template>
   <div class="pokemon">
-    <PokemonMain class="my-pokemon" :myOrOppo="'my'" :lang="props.lang" :pokemon="myPokemon" />
+    <PokemonMain v-if="myPokemon" class="my-pokemon" :myOrOppo="'my'" :lang="props.lang" :pokemon="myPokemon" />
     <!-- <Result class="result"></Result> -->
   </div>
 </template>

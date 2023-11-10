@@ -1,65 +1,11 @@
-import { ref } from 'vue'
+import { getPokemonData } from '@/api'
+import { Pokemon } from '@/interfaces/Pokemon'
+import { ref, type Ref } from 'vue'
 
 export const usePokemon = () => {
-  return ref(new Pokemon())
-}
-
-export class Pokemon {
-  level: number
-  stat: Stat
-
-  constructor() {
-    this.level = 1
-    this.stat = new Stat()
-  }
-
-  updateLevel(newLevel: number) {
-    if (this.level == newLevel) {
-      return
-    } else {
-      this.level = newLevel
-      this.calculateStat()
-    }
-  }
-
-  updateCurrentHP(newHP: number) {
-    if (newHP > this.stat.hp) {
-      return
-    } else {
-      this.stat.currentHP = newHP
-      this.calculateStat()
-    }
-  }
-
-  calculateStat() {
-    return
-  }
-}
-
-class Stat {
-  hp: number
-  currentHP: number
-  attack: number
-  defense: number
-  defenseEHP: number
-  sp_attack: number
-  sp_defense: number
-  sp_defenseEHP: number
-  crit: number
-  cdr: number
-  attack_speed: number
-
-  constructor() {
-    this.hp = 100
-    this.currentHP = this.hp
-    this.attack = 0
-    this.defense = 0
-    this.defenseEHP = 0
-    this.sp_attack = 0
-    this.sp_defense = 0
-    this.sp_defenseEHP = 0
-    this.crit = 0
-    this.cdr = 0
-    this.attack_speed = 0
-  }
+  const myPokemon: Ref<Pokemon> = ref(new Pokemon());
+  getPokemonData().then((data: any) => {
+    myPokemon.value = new Pokemon(data);
+  })
+  return myPokemon;
 }

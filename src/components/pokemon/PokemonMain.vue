@@ -11,7 +11,7 @@ import PokemonHP from './left/PokemonHP.vue';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { localeForPokemon, type TypeOfLocaleForPokemon } from '../../locale/pokemon';
-import type { Pokemon } from '@/composables/pokemon';
+import type { Pokemon } from '@/interfaces/Pokemon';
 
 const props = defineProps<{
   lang: 'en' | 'ko' | 'jp';

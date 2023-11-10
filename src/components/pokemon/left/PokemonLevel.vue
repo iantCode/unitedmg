@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Pokemon } from "@/composables/pokemon";
+import { Pokemon } from "@/interfaces/Pokemon";
 import { computed } from "vue";
 import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/antd.css'

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Pokemon } from '@/composables/pokemon';
+import { Pokemon } from '@/interfaces/Pokemon';
 import { localeForPokemon } from '@/locale/pokemon';
 
 const props = defineProps<{
@@ -16,7 +16,7 @@ const locale = localeForPokemon;
     <span
       v-for="stats in ['hp', 'attack', 'defense', 'defenseEHP', 'sp_attack', 'sp_defense', 'sp_defenseEHP', 'crit', 'cdr']"
       :key="stats">{{
-        locale[stats as TypeOfStats][props.lang] }}: {{ props.pokemon.stat[stats as TypeOfStats] }}
+        locale[stats as TypeOfStats][props.lang] }}: {{ props.pokemon.currentStat[stats as TypeOfStats] }}
     </span>
   </div>
 </template>
