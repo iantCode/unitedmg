@@ -37,7 +37,6 @@ const locale: TypeOfLocaleForMenu = localeForMenu;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   border-bottom: 1px solid black;
 }
 
@@ -80,9 +79,7 @@ const locale: TypeOfLocaleForMenu = localeForMenu;
   .big {
     display: none;
   }
-
-  ;
-
+  
   .small {
     display: block;
   }

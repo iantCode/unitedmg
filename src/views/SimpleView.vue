@@ -1,23 +1,26 @@
 <script setup lang="ts">
 import PokemonMain from "../components/pokemon/PokemonMain.vue"
+import { Pokemon, usePokemon } from '../composables/pokemon'
 // import Result from '../components/Result.vue'
 
 const props = defineProps<{
   lang: 'en' | 'ko' | 'jp';
 }>();
+const myPokemon: Pokemon = usePokemon();
 </script>
 
 <template>
   <div class="pokemon">
-    <PokemonMain class="my-pokemon" :myOrOppo="'my'" :lang="props.lang" />
+    <PokemonMain class="my-pokemon" :myOrOppo="'my'" :lang="props.lang" :pokemon="myPokemon" />
     <!-- <Result class="result"></Result> -->
-</div>
+  </div>
 </template>
 
 <style scoped>
 .pokemon {
   width: 100%;
 }
+
 .my-pokemon {
   width: 90%;
   margin: 1rem auto;
@@ -33,6 +36,7 @@ const props = defineProps<{
   .pokemon {
     display: flex;
   }
+
   .my-pokemon {
     width: 55%;
     margin: 1rem auto;
@@ -40,7 +44,7 @@ const props = defineProps<{
 
   .result {
     -webkit-overflow-scrolling: auto;
-    width: 40%!important;
+    width: 40% !important;
     margin: 5rem auto 0 auto;
   }
 }

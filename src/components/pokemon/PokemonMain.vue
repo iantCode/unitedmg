@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // import Skill from './Skill.vue'
-// import PokemonSelect from './PokemonSelect.vue'
+import PokemonSelect from './left/PokemonSelect.vue'
+import PokemonStatInfoVue from './left/PokemonStatInfo.vue';
 // import Level from './Level.vue'
 // import HP from './HP.vue'
 // import Buffs from '../buffs/Buffs.vue'
@@ -9,9 +10,12 @@
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { localeForPokemon, type TypeOfLocaleForPokemon } from '../../locale/pokemon';
+import type { Pokemon } from '@/composables/pokemon';
+
 const props = defineProps<{
   lang: 'en' | 'ko' | 'jp';
   myOrOppo: string;
+  pokemon: Pokemon;
 }>();
 
 const isDetailWrapped = ref(false);
@@ -40,6 +44,10 @@ const turnWrap = (bool: boolean) => {
 
     <div id="main-container">
       <div id="left" ref="left">
+        <div class="pokemon-info">
+          <PokemonSelect :wrap="isDetailWrapped" v-on:turnWrap="turnWrap" />
+          <PokemonStatInfoVue :pokemon="props.pokemon" :lang="lang" />
+        </div>
       </div>
       <div id="right">
       </div>
