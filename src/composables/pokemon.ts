@@ -22,6 +22,15 @@ export class Pokemon {
     }
   }
 
+  updateCurrentHP(newHP: number) {
+    if (newHP > this.stat.hp) {
+      return
+    } else {
+      this.stat.currentHP = newHP
+      this.calculateStat()
+    }
+  }
+
   calculateStat() {
     return
   }
@@ -29,6 +38,7 @@ export class Pokemon {
 
 class Stat {
   hp: number
+  currentHP: number
   attack: number
   defense: number
   defenseEHP: number
@@ -40,7 +50,8 @@ class Stat {
   attack_speed: number
 
   constructor() {
-    this.hp = 0
+    this.hp = 100
+    this.currentHP = this.hp
     this.attack = 0
     this.defense = 0
     this.defenseEHP = 0

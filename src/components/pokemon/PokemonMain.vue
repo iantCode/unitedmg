@@ -3,6 +3,7 @@
 import PokemonSelect from './left/PokemonSelect.vue'
 import PokemonStatInfoVue from './left/PokemonStatInfo.vue';
 import PokemonLevel from './left/PokemonLevel.vue'
+import PokemonHP from './left/PokemonHP.vue';
 // import HP from './HP.vue'
 // import Buffs from '../buffs/Buffs.vue'
 // import LoadPokemon from './button/LoadPokemon.vue'
@@ -49,6 +50,7 @@ const turnWrap = (bool: boolean) => {
           <PokemonStatInfoVue :pokemon="props.pokemon" :lang="props.lang" />
         </div>
         <PokemonLevel :lang="props.lang" :pokemon="props.pokemon"/>
+        <PokemonHP :pokemon="props.pokemon"/>
       </div>
       <div id="right">
       </div>

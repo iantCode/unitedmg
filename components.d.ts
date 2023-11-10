@@ -16,6 +16,7 @@ declare module 'vue' {
     BDropDownItem: typeof import('bootstrap-vue-next')['BDropDownItem']
     BModal: typeof import('bootstrap-vue-next')['BModal']
     Pokemon: typeof import('./src/components/pokemon/Pokemon.vue')['default']
+    PokemonHP: typeof import('./src/components/pokemon/left/PokemonHP.vue')['default']
     PokemonLevel: typeof import('./src/components/pokemon/left/PokemonLevel.vue')['default']
     PokemonMain: typeof import('./src/components/pokemon/PokemonMain.vue')['default']
     PokemonSelect: typeof import('./src/components/pokemon/left/PokemonSelect.vue')['default']
