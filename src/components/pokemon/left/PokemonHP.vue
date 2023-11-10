@@ -24,7 +24,7 @@ const calculateHPPercentage: ComputedRef<number> = computed(() => {
 </script>
 
 <template>
-  <div class="level">
+  <div class="hp-percent">
     <p>HP : {{ calculateHPPercentage }}%</p>
 
     <vue-slider v-model="currentHP" :min="0" :max="props.pokemon.currentStat.hp" :marks="false"
@@ -33,8 +33,8 @@ const calculateHPPercentage: ComputedRef<number> = computed(() => {
 </template>
 
   
-<style scoped>
-.level {
+<style>
+.hp-percent {
   margin: 1rem 0 1.5rem 0;
 }
 </style>

@@ -3,7 +3,7 @@ import type { Ref } from "vue";
 import PokemonMain from "../components/pokemon/PokemonMain.vue"
 import { usePokemon } from '../composables/pokemon'
 import { Pokemon } from "@/interfaces/Pokemon";
-// import Result from '../components/Result.vue'
+import CalculationResult from '../components/common/CalculationResult.vue'
 
 const props = defineProps<{
   lang: 'en' | 'ko' | 'jp';
@@ -14,7 +14,7 @@ const myPokemon: Ref<Pokemon> = usePokemon();
 <template>
   <div class="pokemon">
     <PokemonMain v-if="myPokemon" class="my-pokemon" :myOrOppo="'my'" :lang="props.lang" :pokemon="myPokemon" />
-    <!-- <Result class="result"></Result> -->
+    <CalculationResult class="result" />
   </div>
 </template>
 

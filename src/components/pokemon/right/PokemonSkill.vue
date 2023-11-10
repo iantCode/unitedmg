@@ -30,7 +30,7 @@ const changeSkill = () => {
             selected="0">
             <div :key="index" v-for="(skill, index) in props.pokemon.baseData.skill">
                 <BFormRadio :id="skill.htmlClass" :aria-describedby="ariaDescribedby" name="skills" :value="index">
-                    {{ skill.name.ko }}
+                    {{ skill.name[props.lang] }}
                 </BFormRadio>
             </div>
         </BFormRadioGroup>

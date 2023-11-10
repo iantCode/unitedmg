@@ -24,6 +24,7 @@ const locale: TypeOfLocaleForMenu = localeForMenu;
       </div>
     </div>
     <div class="announce">
+      test
       <!-- <div v-html="this.$store.state.announce[this.$store.state.lang]"></div> -->
     </div>
     <!-- <Setting /> -->

@@ -17,6 +17,8 @@ declare module 'vue' {
     BFormRadio: typeof import('bootstrap-vue-next')['BFormRadio']
     BFormRadioGroup: typeof import('bootstrap-vue-next')['BFormRadioGroup']
     BModal: typeof import('bootstrap-vue-next')['BModal']
+    BProgress: typeof import('bootstrap-vue-next')['BProgress']
+    CalculationResult: typeof import('./src/components/common/CalculationResult.vue')['default']
     Pokemon: typeof import('./src/components/pokemon/Pokemon.vue')['default']
     PokemonHP: typeof import('./src/components/pokemon/left/PokemonHP.vue')['default']
     PokemonLevel: typeof import('./src/components/pokemon/left/PokemonLevel.vue')['default']

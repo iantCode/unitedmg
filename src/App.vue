@@ -25,4 +25,6 @@ onBeforeMount(() => {
   <AppFooter :lang="lang" />
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
