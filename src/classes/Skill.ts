@@ -14,35 +14,37 @@ export class Skill {
   }
 }
 
-class SkillInfo {
+export class SkillInfo {
+  name: LocaleTable
   canCrit: boolean
   isHeal: boolean
   noDefense: boolean
   maxDmgToUser?: number
   maxDmgToWild?: number
-  rsb: RSB[];
+  rsb: RSB[]
 
   constructor(jsonData: any) {
-    this.canCrit = jsonData.canCrit;
-    this.isHeal = jsonData.isHeal;
-    this.noDefense = jsonData.noDefense;
-    this.rsb = jsonData.rsb.map((v: any) => new RSB(v));
+    this.name = jsonData.name
+    this.canCrit = jsonData.canCrit
+    this.isHeal = jsonData.isHeal
+    this.noDefense = jsonData.noDefense
+    this.rsb = jsonData.rsb.map((v: any) => new RSB(v))
     if (jsonData.maxDmgToUser) {
-      this.maxDmgToUser = jsonData.maxDmgToUser;
+      this.maxDmgToUser = jsonData.maxDmgToUser
     }
     if (jsonData.maxDmgToWild) {
-      this.maxDmgToWild = jsonData.maxDmgToWild;
+      this.maxDmgToWild = jsonData.maxDmgToWild
     }
   }
 }
 
-class RSB {
+export class RSB {
   attackRatio?: number
   sp_attackRatio?: number
 
   HPRatioType?: 'max' | 'remaining' | 'lost'
   HPRatio?: number
-  
+
   bonus: number
   levelRatio: number
   usingDefense: 'defense' | 'sp_defense'
@@ -50,15 +52,15 @@ class RSB {
 
   constructor(jsonData: any) {
     if (jsonData.HPRatioType) {
-      this.HPRatioType = jsonData.HPRatioType;
-      this.HPRatio = jsonData.HPRatio;
+      this.HPRatioType = jsonData.HPRatioType
+      this.HPRatio = jsonData.HPRatio
     } else {
-      this.attackRatio = jsonData.attackRatio;
-      this.sp_attackRatio = jsonData.sp_attackRatio;
+      this.attackRatio = jsonData.attackRatio
+      this.sp_attackRatio = jsonData.sp_attackRatio
     }
-    this.bonus = jsonData.bonus;
-    this.levelRatio = jsonData.levelRatio;
-    this.usingDefense = jsonData.usingDefense;
-    this.tick = jsonData.tick;
+    this.bonus = jsonData.bonus
+    this.levelRatio = jsonData.levelRatio
+    this.usingDefense = jsonData.usingDefense
+    this.tick = jsonData.tick
   }
 }

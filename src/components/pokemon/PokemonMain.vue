@@ -10,12 +10,12 @@ import PokemonSkill from './right/PokemonSkill.vue';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { localeForPokemon, type TypeOfLocaleForPokemon } from '../../locale/pokemon';
-import type { Pokemon } from '@/interfaces/Pokemon';
+import type { UniteDmg } from '@/classes/UniteDmg';
 
 const props = defineProps<{
   lang: 'en' | 'ko' | 'jp';
-  myOrOppo: string;
-  pokemon: Pokemon;
+  myOrOppo: 'my' | 'oppo';
+  uniteDmg: UniteDmg;
 }>();
 
 const isDetailWrapped = ref(false);
@@ -46,15 +46,16 @@ const turnWrap = (bool: boolean) => {
       <div id="left" ref="left">
         <div class="pokemon-info">
           <PokemonSelect :wrap="isDetailWrapped" v-on:turnWrap="turnWrap" />
-          <PokemonStatInfo :pokemon="props.pokemon" :lang="props.lang" />
+          <PokemonStatInfo :uniteDmg="props.uniteDmg" :lang="props.lang" :myOrOppo="props.myOrOppo" />
         </div>
-        <PokemonLevel :pokemon="props.pokemon" :lang="props.lang" />
-        <PokemonHP :pokemon="props.pokemon" />
+        <PokemonLevel :uniteDmg="props.uniteDmg" :lang="props.lang" :myOrOppo="props.myOrOppo" />
+        <PokemonHP :uniteDmg="props.uniteDmg" :lang="props.lang" :myOrOppo="props.myOrOppo" />
       </div>
       <div id="right">
-        <PokemonSkill :pokemon="props.pokemon" :lang="props.lang" />
+        <PokemonSkill :uniteDmg="props.uniteDmg" :myOrOppo="props.myOrOppo" :lang="props.lang" />
       </div>
     </div>
+    <!-- <Buffs ref="buff" :wrap="isDetailWrapped" v-on:turnWrap="turnWrap"></Buffs> -->
   </div>
 </template>
   
@@ -128,4 +129,4 @@ const turnWrap = (bool: boolean) => {
     width: 40%;
   }
 }
-</style>
+</style>@/classes/Pokemon

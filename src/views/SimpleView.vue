@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import type { Ref } from "vue";
 import PokemonMain from "../components/pokemon/PokemonMain.vue"
-import { usePokemon } from '../composables/pokemon'
-import { Pokemon } from "@/interfaces/Pokemon";
 import CalculationResult from '../components/common/CalculationResult.vue'
+import { UniteDmg } from '@/classes/UniteDmg'
 
 const props = defineProps<{
   lang: 'en' | 'ko' | 'jp';
 }>();
-const myPokemon: Ref<Pokemon> = usePokemon();
+const uniteDmg = new UniteDmg();
 </script>
 
 <template>
   <div class="pokemon">
-    <PokemonMain v-if="myPokemon" class="my-pokemon" :myOrOppo="'my'" :lang="props.lang" :pokemon="myPokemon" />
-    <CalculationResult class="result" />
+    <PokemonMain v-if="uniteDmg.pokemon.my" class="my-pokemon" :myOrOppo="'my'" :lang="props.lang" :uniteDmg="uniteDmg" />
+    <CalculationResult :uniteDmg="uniteDmg" :lang="props.lang" class="result" />
   </div>
 </template>
 
@@ -50,4 +48,4 @@ const myPokemon: Ref<Pokemon> = usePokemon();
     margin: 5rem auto 0 auto;
   }
 }
-</style>
+</style>@/classes/Pokemon

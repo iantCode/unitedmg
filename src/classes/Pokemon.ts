@@ -7,36 +7,46 @@ export class Pokemon {
   bonusStat: Stat
   currentStat: Stat
   baseData: BasePokemon
-  usingSkill: number;
+  usingSkill: number
 
-  constructor(data?: any) {
+  constructor(isDummy: boolean, data?: any) {
     this.level = 1
-    this.usingSkill = 0;
+    this.usingSkill = 0
+
     if (data) {
       this.baseData = new BasePokemon(data)
       this.currentStat = this.baseData.stats[this.level - 1]
       this.currentStat.currentHP = this.currentStat.hp
       this.bonusStat = defaultStat
-      this.calculateEHP();
-    } else {
-      this.currentStat = defaultStat
-      this.bonusStat = defaultStat
-      this.baseData = {
-        name: {
-          ko: '대타출동인형',
-          en: 'Dummy',
-          jp: 'Dummy'
-        },
-        stats: [defaultStat]
-      }
+      this.calculateEHP()
+      return;
     }
+
+    this.currentStat = defaultStat
+    this.bonusStat = defaultStat
+    this.baseData = {
+      name: {
+        ko: '대타출동인형',
+        en: 'Dummy',
+        jp: 'Dummy'
+      },
+      stats: [defaultStat]
+    }
+
+    if (isDummy) {
+      this.currentStat.hp = 99999
+      this.currentStat.currentHP = 99999
+    }
+    return;
   }
 
   updateLevel(newLevel: number) {
-    if (this.level == newLevel) {
+    if (this.level === newLevel) {
       return
     } else {
       this.level = newLevel
+      this.currentStat = this.baseData.stats[this.level - 1]
+      this.currentStat.currentHP = this.currentStat.hp
       this.calculateStat()
     }
   }
@@ -51,16 +61,21 @@ export class Pokemon {
   }
 
   calculateStat() {
-    return
+    //Calculate Stat Stuffs
+    this.calculateEHP()
   }
 
   calculateEHP() {
-    this.currentStat.defenseEHP = Math.floor(this.currentStat.hp * (1 + (this.currentStat.defense / 600)))
-    this.currentStat.sp_defenseEHP = Math.floor(this.currentStat.hp * (1 + (this.currentStat.sp_defense / 600)))
+    this.currentStat.defenseEHP = Math.floor(
+      this.currentStat.hp * (1 + this.currentStat.defense / 600)
+    )
+    this.currentStat.sp_defenseEHP = Math.floor(
+      this.currentStat.hp * (1 + this.currentStat.sp_defense / 600)
+    )
   }
 
   updateCurrentSkill(newSkill: number) {
-    this.usingSkill = newSkill;
+    this.usingSkill = newSkill
   }
 }
 

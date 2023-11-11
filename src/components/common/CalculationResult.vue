@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import type { UniteDmg } from '@/classes/UniteDmg';
 import { type Ref, onDeactivated, onMounted, ref } from 'vue';
 // import { Lang_Result } from '../utils/lang'
 
 let resizeEvent: ResizeObserver | undefined = undefined;
 const root: Ref<HTMLInputElement | null> = ref(null);
+const props = defineProps<{
+  uniteDmg: UniteDmg
+  lang: 'en' | 'ko' | 'jp';
+}>();
 
 onMounted(() => {
   document.addEventListener('scroll', scrollChange);
@@ -19,7 +24,6 @@ onMounted(() => {
 })
 
 const scrollChange = () => {
-  console.log(root);
   if (root.value) {
     const rect = root.value!.getBoundingClientRect();
     const targetSize = toPixel(9) > rect.height ? rect.height : toPixel(9);
@@ -60,8 +64,11 @@ onDeactivated(() => {
 
 <template>
   <div ref="root" class="sticky">
-    <b-progress :value="100" :max="1000" show-progress animated></b-progress>
-    <div>데미지: 100</div>
+    <div class="damage" :key="damage.name[props.lang]" v-for="damage in props.uniteDmg.damage.value">
+      <b-progress :value="damage.damage" :max="props.uniteDmg.pokemon.oppo.value.currentStat.hp" show-progress animated></b-progress>
+      <div>{{ damage.name[lang] }} 데미지: {{ damage.damage }}</div>
+    </div>
+
   </div>
 </template>
   
@@ -108,4 +115,4 @@ onDeactivated(() => {
     background-color: rgba(255, 255, 255, 0.05) !important;
   }
 }
-</style>
+</style>@/classes/Pokemon
